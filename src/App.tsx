@@ -19,8 +19,8 @@ function App() {
         <Header/> 
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Main/>} />
-            <Route path='/Catalog' element={ <Catalog/>} />
+            <Route path='/Catalog' element={<Main/>} />
+            <Route path='/' element={ <Catalog/>} />
             <Route path='/Cart' element={ <Cart/>} />
             <Route path='/Product' element={ <Product/>} />
             <Route path='/Registration' element={ <Registration/>} />
