@@ -5,31 +5,45 @@ import {imgArr} from "../../data";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import ProductSceleton from "./ProductSceleton";
 import { loading } from "../../features/loading/loadingSlice";
+import axios from "axios";
+import ProductItem from "./ProductItem";
 
 export default function ProductList(){
 
   const [productsData,setProductsData]= useState<Product[]>([]);
-  const statusMen = useAppSelector((state)=> state.sorter.statusMen);
-  const statusWomen = useAppSelector((state)=> state.sorter.statusWomen);
+  const gender = useAppSelector((state)=> state.sorter.gender);
   const loadingStatus = useAppSelector((state)=> state.loader.loading);
   const dispatch = useAppDispatch();
 
+ console.log(imgCardInTheIndexPage)
+ 
+  //через fetch
+  // useEffect(()=>{
+  //   dispatch(loading())
+  //   fetch("https://659d0eca633f9aee79087df4.mockapi.io/ShopODR/products?gender=" + gender)
+  //   .then(res=> res.json())
+  //   .then(res => {
+  //     setProductsData(res);
+  //     setTimeout(()=>{
+  //       dispatch(loading())
+  //     },1000);
+  //   }
+  //   )
+  // },[gender]);
+
 
   useEffect(()=>{
-    fetch("https://659d0eca633f9aee79087df4.mockapi.io/ShopODR/products")
-    .then(res=> res.json())
+    dispatch(loading())
+    axios.get("https://659d0eca633f9aee79087df4.mockapi.io/ShopODR/products?gender=" + gender)
     .then(res => {
-      setProductsData(res);
-      setTimeout(()=>{
-        dispatch(loading())
-      },1000);
-    }
+       setProductsData(res.data);
+       setTimeout(()=>{
+         dispatch(loading())
+        },1000);
+      }
     )
-  },[]);
+  },[gender]);
 
-  const itemsList: Product[] = productsData.filter((product: Product, i: number)=>
-    product.gender==="male"
-  );
 
 
 return(
@@ -39,25 +53,7 @@ return(
       {productsData.map((product: Product, index:number) => 
         loadingStatus
         ?<ProductSceleton key={index}/>
-        :
-          <div className="product_elements" key={index} data-id={product.id} data-name={product.title} data-price={product.price}>
-          <a className="product_link_content" href="/Product">
-              <img className="img_product_link" src={imgArr[index]} alt="none"/>
-              <div className="content_product_card">
-                  <p className="pp_card">{product.title}</p>
-                  <p className="ppp_card">{product.description}</p>
-                  <p className="pppp_card">${product.price}</p>
-              </div>
-          </a>
-          <div className="hover_img">
-          <a className="hover_img_link" href="#">
-            <img className="img_hover_img_link" src={imgCardInTheIndexPage}
-              alt="noth"
-            />
-            <p className="ppppp_card">Add to Cart</p>
-          </a>
-      </div>
-        </div>
+        :<ProductItem index={index} product={product} imgArr={imgArr} img ={imgCardInTheIndexPage} />
       )
     }
     </div>

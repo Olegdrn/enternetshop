@@ -20,5 +20,6 @@ export interface Product {
     description: string;
     image: string;
     price: number;
-    gender: string
+    gender: string;
+    size:string[]
   }

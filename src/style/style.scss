@@ -1366,6 +1366,15 @@ summary ::after {
     justify-content: space-between;
 }
 
+.search{
+    width: 6px;
+}
+
+.searchField{
+    display: flex;
+    justify-content: space-between;
+}
+
 @media (max-width: 768px) {
 
     $container_width: 767px;

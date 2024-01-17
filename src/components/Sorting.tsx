@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAppSelector, useAppDispatch } from "../hooks/redux";
-import { changeMen, changeWomen } from "../features/sorter/sortingSlice";
+import { changeMen, changeWomen, changeAll } from "../features/sorter/sortingSlice";
 
 export default function Sorting(){
 
@@ -14,6 +14,9 @@ export default function Sorting(){
     const WomenList = () =>{
         dispatch(changeWomen())
     }
+    const All = ()=>{
+        dispatch(changeAll())
+    }
 
 
   return(
@@ -23,7 +26,10 @@ export default function Sorting(){
             <div className="flex choose1">
                 <p className="p_choose">TRENDING NOW</p>
                 <a className="arrow_link" href="#" 
-                onClick={()=>{setShowTrandingSorting(!showTrandingSorting)}}
+                onClick={()=>{
+                    setShowTrandingSorting(!showTrandingSorting)
+                    All()
+                }}
                 >
                 <div className="arrow"></div>
                 </a>

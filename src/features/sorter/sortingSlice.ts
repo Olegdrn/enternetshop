@@ -2,14 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 // Define a type for the slice state
 interface showMenWomen {
-  statusMen: boolean;
-  statusWomen:boolean
+  gender: string
 }
 
 // Define the initial state using that type
 const initialState: showMenWomen = {
-  statusMen: false,
-  statusWomen:false
+  gender: ""
 }
 
 export const sortingSlice = createSlice({
@@ -18,15 +16,18 @@ export const sortingSlice = createSlice({
   initialState,
   reducers: {
      changeMen: (state) => {
-      state.statusMen = !state.statusMen
+      state.gender = "male"
     },
     changeWomen: (state) => {
-      state.statusWomen = !state.statusWomen
+      state.gender = "female"
+    },
+    changeAll: (state) => {
+      state.gender = ""
     }
   },
 })
 
-export const { changeMen, changeWomen } = sortingSlice.actions
+export const { changeMen, changeWomen,changeAll } = sortingSlice.actions
 
 
 export default sortingSlice.reducer

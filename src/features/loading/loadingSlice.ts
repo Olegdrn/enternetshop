@@ -7,7 +7,7 @@ interface isLoading {
 
 // Define the initial state using that type
 const initialState: isLoading = {
-  loading: true
+  loading: false
 }
 
 export const loadingSlice = createSlice({
@@ -16,7 +16,7 @@ export const loadingSlice = createSlice({
   initialState,
   reducers: {
      loading: (state) => {
-      state.loading = false;
+      state.loading = !state.loading;
     }
   },
 })
