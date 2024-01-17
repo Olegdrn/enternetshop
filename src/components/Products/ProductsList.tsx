@@ -2,15 +2,17 @@ import imgCardInTheIndexPage from "../../assets/img/product_line/card_img.png";
 import {Product} from "../../types";
 import { useEffect, useState } from "react";
 import {imgArr} from "../../data";
-import { useAppSelector } from "../../hooks/redux";
+import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import ProductSceleton from "./ProductSceleton";
+import { loading } from "../../features/loading/loadingSlice";
 
 export default function ProductList(){
 
   const [productsData,setProductsData]= useState<Product[]>([]);
   const statusMen = useAppSelector((state)=> state.sorter.statusMen);
   const statusWomen = useAppSelector((state)=> state.sorter.statusWomen);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const loadingStatus = useAppSelector((state)=> state.loader.loading);
+  const dispatch = useAppDispatch();
 
 
   useEffect(()=>{
@@ -19,15 +21,15 @@ export default function ProductList(){
     .then(res => {
       setProductsData(res);
       setTimeout(()=>{
-        setIsLoading(false);
+        dispatch(loading())
       },1000);
     }
     )
-  },[])
+  },[]);
 
   const itemsList: Product[] = productsData.filter((product: Product, i: number)=>
     product.gender==="male"
-  )
+  );
 
 
 return(
@@ -35,11 +37,11 @@ return(
   <section className="product_card container">
     <div className="first_product_line">
       {productsData.map((product: Product, index:number) => 
-        isLoading
+        loadingStatus
         ?<ProductSceleton key={index}/>
         :
           <div className="product_elements" key={index} data-id={product.id} data-name={product.title} data-price={product.price}>
-          <a className="product_link_content" href="#">
+          <a className="product_link_content" href="/Product">
               <img className="img_product_link" src={imgArr[index]} alt="none"/>
               <div className="content_product_card">
                   <p className="pp_card">{product.title}</p>

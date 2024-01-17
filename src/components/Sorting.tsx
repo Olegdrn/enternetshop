@@ -5,8 +5,6 @@ import { changeMen, changeWomen } from "../features/sorter/sortingSlice";
 export default function Sorting(){
 
     const [showTrandingSorting, setShowTrandingSorting] = useState<boolean>(false);
-    const statusMen = useAppSelector((state)=> state.sorter.statusMen);
-    const statusWomen = useAppSelector((state)=> state.sorter.statusWomen);
     const dispatch = useAppDispatch();
 
     const MenList = ()=>{
