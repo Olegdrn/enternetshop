@@ -4,7 +4,7 @@ import SecondHeaderImg from "../assets/img/header/Forma.png";
 import ThirdHeaderImg from "../assets/img/header/Forma 1.png";
 import FourthHeaderImg from "../assets/img/header/search.png";
 import FifthHeaderImg from "../assets/img/header/Forma 2.png";
-import Searching from "./Searching";
+import Searching from "./Searching/Searching";
 
 export default function Header(){
 
@@ -18,9 +18,7 @@ export default function Header(){
                     alt="logo"/>
                     </a>
                     </div>
-                    <div className="searchField"><a href="#"><img src={FourthHeaderImg} alt="logo1"/></a>
-                    {/* <Searching/> */}
-                    </div>
+                    <Searching/>
                 </div>
                 <div className="right_img">
                     <div className="third_img"><a href="/Catalog"> <img src={SecondHeaderImg} 

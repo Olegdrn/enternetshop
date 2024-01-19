@@ -27,6 +27,8 @@ export const sortingSlice = createSlice({
   },
 })
 
+
+
 export const { changeMen, changeWomen,changeAll } = sortingSlice.actions
 
 

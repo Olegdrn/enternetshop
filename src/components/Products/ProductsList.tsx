@@ -15,8 +15,7 @@ export default function ProductList(){
   const loadingStatus = useAppSelector((state)=> state.loader.loading);
   const dispatch = useAppDispatch();
 
- console.log(imgCardInTheIndexPage)
- 
+
   //через fetch
   // useEffect(()=>{
   //   dispatch(loading())
@@ -53,7 +52,12 @@ return(
       {productsData.map((product: Product, index:number) => 
         loadingStatus
         ?<ProductSceleton key={index}/>
-        :<ProductItem index={index} product={product} imgArr={imgArr} img ={imgCardInTheIndexPage} />
+        :<ProductItem 
+        index={index} 
+        product={product} 
+        imgArr={imgArr} 
+        img ={imgCardInTheIndexPage} 
+        />
       )
     }
     </div>

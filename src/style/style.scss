@@ -1367,12 +1367,34 @@ summary ::after {
 }
 
 .search{
-    width: 6px;
+    width: 10vw;
 }
+.inputSearch{
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 12px 20px;
+    border-radius: 10px;
+    width: 100%;
+    background-color: white;
+    font-size: 16px;
+    padding-left: 43px;
+
+    &:focus{
+        border: 1px solid rgba(233, 206, 206, 0.2);
+    }
+  }
+  .searchIcon{
+    width: 24px;
+    height: 24px;
+    opacity: 0.5;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+  }
 
 .searchField{
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 @media (max-width: 768px) {
