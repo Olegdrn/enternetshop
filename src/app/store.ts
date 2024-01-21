@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import sortingReducer from '../features/sorter/sortingSlice';
-import loadingReducer from '../features/loading/loadingSlice'
+import loadingReducer from '../features/loading/loadingSlice';
+import searchingReducer from '../features/searching/searchingSlice';
 
 
 export const store = configureStore({
   reducer: {
     sorter: sortingReducer,
-    loader: loadingReducer
+    loader: loadingReducer,
+    searcher: searchingReducer,
   },
 });
 
