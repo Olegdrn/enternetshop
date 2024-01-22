@@ -17,7 +17,8 @@ export default function CardItem(){
                     <p className="card_id_para">Color: Red</p>
                     <p className="card_id_para">Size: Xl </p>
                     <label className="card_id_para">
-                        Quantity  <input className="quantity_inp" type="number" min="1" max="10"/>
+                        Quantity
+                    <input className="quantity_inp" type="number" min="1" max="10"/>
                     </label>
                 </div>
             </div>

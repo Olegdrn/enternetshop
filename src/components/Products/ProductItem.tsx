@@ -4,7 +4,7 @@ type CurrentProps = {
   product:Product;
   img:string;
   index:number;
-  imgArr:string[];
+  mainProductImg:string;
 }
 
 export default function ProductItem(props:CurrentProps){
@@ -13,7 +13,7 @@ export default function ProductItem(props:CurrentProps){
     <>
       <div className="product_elements" key={props.index} data-id={props.product.id} data-name={props.product.title} data-price={props.product.price}>
           <a className="product_link_content" href="#">
-              <img className="img_product_link" src={props.imgArr[props.index]} alt="none"/>
+              <img className="img_product_link" src={props.mainProductImg} alt="none"/>
               <div className="content_product_card">
                   <p className="pp_card">{props.product.title}</p>
                   <p className="ppp_card">{props.product.description}</p>

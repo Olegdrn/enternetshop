@@ -1,7 +1,6 @@
 import imgCardInTheIndexPage from "../../assets/img/product_line/card_img.png";
 import {Product} from "../../types";
 import { useEffect, useState } from "react";
-import {imgArr} from "../../data";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import ProductSceleton from "./ProductSceleton";
 import { loading } from "../../features/loading/loadingSlice";
@@ -56,7 +55,7 @@ return(
         :<ProductItem 
         index={index} 
         product={product} 
-        imgArr={imgArr} 
+        mainProductImg={product.image} 
         img ={imgCardInTheIndexPage} 
         />
       )
