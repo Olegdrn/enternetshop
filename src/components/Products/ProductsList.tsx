@@ -8,13 +8,15 @@ import axios from "axios";
 import ProductItem from "./ProductItem";
 import { setFilterSensor } from "../../features/searching/searchingSlice";
 
+
 export default function ProductList(){
 
   const [productsData,setProductsData]= useState<Product[]>([]);
   const gender:string = useAppSelector((state)=> state.sorter.gender);
   const loadingStatus:boolean = useAppSelector((state)=> state.loader.loading);
   const filter:string = useAppSelector((state)=>state.searcher.text);
-  const filterSensor:boolean = useAppSelector((state)=> state.searcher.filterSensor)
+  const filterSensor:boolean = useAppSelector((state)=> state.searcher.filterSensor);
+  const productsAmount:number = useAppSelector((state)=>state.paginator.productsAmount);
   const dispatch = useAppDispatch();
   
 
@@ -29,7 +31,7 @@ export default function ProductList(){
         },1000);
       }
     )
-  },[gender,filterSensor]);
+  },[gender, filterSensor, productsAmount]);
   
 
   useEffect(()=>{
@@ -38,16 +40,17 @@ export default function ProductList(){
       .toLocaleLowerCase().includes(filter.toLocaleLowerCase()));
       setProductsData(filteredProducts);
     } else {
-      dispatch(setFilterSensor())
+      dispatch(setFilterSensor());
     }
   },[filter])
 
-
+  const productsList: Product[] = productsData.slice(0,productsAmount);
+  
 return(
 <>
   <section className="product_card container">
     <div className="first_product_line">
-      {productsData.map((product: Product, index:number) => 
+      {productsList.map((product: Product, index:number) => 
         loadingStatus
         ?<ProductSceleton key={index}/>
         :<ProductItem 
