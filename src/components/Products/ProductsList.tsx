@@ -43,8 +43,6 @@ export default function ProductList(){
   },[filter])
 
 
-
-
 return(
 <>
   <section className="product_card container">

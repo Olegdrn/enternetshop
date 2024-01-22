@@ -16,7 +16,7 @@ export const sortingSlice = createSlice({
   initialState,
   reducers: {
      changeMen: (state) => {
-      state.gender = "male"
+      state.gender = "man"
     },
     changeWomen: (state) => {
       state.gender = "female"
