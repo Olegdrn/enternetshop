@@ -244,7 +244,6 @@ $border_color: #EAEAEA;
     height: 604px;
     position: absolute;
     z-index: 2;
-
 }
 
 .h_menu {
@@ -1371,17 +1370,17 @@ summary ::after {
 }
 .inputSearch{
     border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 12px 20px;
+    padding: 12px 43px;
     border-radius: 10px;
     width: 100%;
     background-color: white;
     font-size: 16px;
-    padding-left: 43px;
 
     &:focus{
         border: 1px solid rgba(233, 206, 206, 0.2);
     }
   }
+
   .searchIcon{
     width: 24px;
     height: 24px;
@@ -1389,7 +1388,19 @@ summary ::after {
     position: absolute;
     top: 8px;
     left: 10px;
-  }
+}
+
+    .searchIconClose{
+        @extend .searchIcon;
+        top: 10px;
+        left: 13.5vw;
+        cursor: pointer;
+    }
+
+    .searchIconClose:hover{
+        color: #F16D7F;;
+    }
+  
 
 .searchField{
     display: flex;

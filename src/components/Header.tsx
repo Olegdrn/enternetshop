@@ -4,7 +4,7 @@ import SecondHeaderImg from "../assets/img/header/Forma.png";
 import ThirdHeaderImg from "../assets/img/header/Forma 1.png";
 import FourthHeaderImg from "../assets/img/header/search.png";
 import FifthHeaderImg from "../assets/img/header/Forma 2.png";
-import Searching from "./Searching/Searching";
+import {Searching} from "./Searching/Searching";
 
 export default function Header(){
 
