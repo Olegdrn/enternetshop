@@ -850,13 +850,13 @@ $border_color: #EAEAEA;
     color: $main_bright_color;
 }
 
-
 .pp_product_page {
     font-weight: 300;
     font-size: 14px;
     line-height: 17px;
     color: $main_bright_color;
     list-style-type: none;
+    text-decoration: none;
 }
 
 .first_product_section_page {
@@ -1365,48 +1365,7 @@ summary ::after {
     justify-content: space-between;
 }
 
-.search{
-    width: 10vw;
-}
-.inputSearch{
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    padding: 12px 43px;
-    border-radius: 10px;
-    width: 100%;
-    background-color: white;
-    font-size: 16px;
 
-    &:focus{
-        border: 1px solid rgba(233, 206, 206, 0.2);
-    }
-  }
-
-  .searchIcon{
-    width: 24px;
-    height: 24px;
-    opacity: 0.5;
-    position: absolute;
-    top: 8px;
-    left: 10px;
-}
-
-    .searchIconClose{
-        @extend .searchIcon;
-        top: 10px;
-        left: 13.5vw;
-        cursor: pointer;
-    }
-
-    .searchIconClose:hover{
-        color: #F16D7F;;
-    }
-  
-
-.searchField{
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-}
 
 @media (max-width: 768px) {
 

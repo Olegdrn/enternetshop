@@ -1,5 +1,5 @@
 import React from "react";
-import './Searching.module.scss';
+import styles from './Searching.module.scss';
 import FourthHeaderImg from "../../assets/img/header/search.svg";
 import CloseHeaderImg from "../../assets/img/header/close.svg";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
@@ -19,20 +19,20 @@ export const Searching: React.FC = () => {
   }
 
   const closeSearch: ()=> void = ()=>{
-    dispatch(searching(""));
     dispatch(setFilterSensor());
+    dispatch(searching(""));
     inputRef.current?.focus();
   }
 
   return(
-    <div className="searchField">
+    <div className={styles.searchField}>
         <div>
-          <img src={FourthHeaderImg} className="searchIcon" alt="logo1"/>
+          <img src={FourthHeaderImg} className={styles.searchIcon} alt="logo1"/>
         </div>
-        <div className="search">
+        <div className={styles.search}>
             <input 
               ref={inputRef}
-              className="inputSearch" 
+              className={styles.inputSearch}
               type="text" 
               value={searchingText} 
               placeholder="product" 
@@ -43,7 +43,7 @@ export const Searching: React.FC = () => {
           ? <div  onClick={closeSearch}>
               <img 
                 src={CloseHeaderImg} 
-                className="searchIconClose" 
+                className={styles.searchIconClose}
                 alt="logo1"
               />
             </div>

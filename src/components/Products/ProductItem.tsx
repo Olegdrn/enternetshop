@@ -3,7 +3,6 @@ import {Product} from "../../types";
 type CurrentProps = {
   product:Product;
   img:string;
-  index:number;
   mainProductImg:string;
 }
 
@@ -11,7 +10,7 @@ export default function ProductItem(props:CurrentProps){
 
   return(
     <>
-      <div className="product_elements" key={props.index} data-id={props.product.id} data-name={props.product.title} data-price={props.product.price}>
+      <div className="product_elements" data-id={props.product.id} data-name={props.product.title} data-price={props.product.price}>
           <a className="product_link_content" href="#">
               <img className="img_product_link" src={props.mainProductImg} alt="none"/>
               <div className="content_product_card">

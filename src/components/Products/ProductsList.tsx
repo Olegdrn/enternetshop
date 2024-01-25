@@ -7,7 +7,7 @@ import { loading } from "../../features/loading/loadingSlice";
 import axios from "axios";
 import ProductItem from "./ProductItem";
 import { setFilterSensor } from "../../features/searching/searchingSlice";
-
+import useDebounce from "../../hooks/useDebounce";
 
 export default function ProductList(){
 
@@ -18,6 +18,9 @@ export default function ProductList(){
   const filterSensor:boolean = useAppSelector((state)=> state.searcher.filterSensor);
   const productsAmount:number = useAppSelector((state)=>state.paginator.productsAmount);
   const dispatch = useAppDispatch();
+
+
+  const debouncedSearchTerm = useDebounce(filter, 500);
   
 
 
@@ -26,23 +29,22 @@ export default function ProductList(){
     axios.get("https://659d0eca633f9aee79087df4.mockapi.io/ShopODR/products?gender=" + gender)
     .then(res => {
        setProductsData(res.data);
-       setTimeout(()=>{
-         dispatch(loading())
-        },1000);
+        dispatch(loading())
       }
     )
   },[gender, filterSensor, productsAmount]);
   
 
   useEffect(()=>{
-    if (filter) {
+    if (debouncedSearchTerm) {
       const filteredProducts: Product[] = productsData.filter(product => product.title
       .toLocaleLowerCase().includes(filter.toLocaleLowerCase()));
       setProductsData(filteredProducts);
-    } else {
+    } 
+    else {
       dispatch(setFilterSensor());
     }
-  },[filter])
+  },[debouncedSearchTerm])
 
   const productsList: Product[] = productsData.slice(0,productsAmount);
   
@@ -54,7 +56,7 @@ return(
         loadingStatus
         ?<ProductSceleton key={index}/>
         :<ProductItem 
-        index={index} 
+        key={index}
         product={product} 
         mainProductImg={product.image} 
         img ={imgCardInTheIndexPage} 

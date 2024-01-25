@@ -7,9 +7,9 @@ export default function Top(){
             <h2 className="h2_product_page">NEW ARRIVALS</h2>
             <nav>
                 <ul className="breadcrumb">
-                    <li className="p_product_page"><a className="p_product_page_link" href="#">HOME/</a></li>
-                    <li className="p_product_page"><a className="p_product_page_link" href="#">MEN/</a></li>
-                    <li className="pp_product_page">NEW ARRIVALS</li>
+                    <li className="p_product_page"><a className="p_product_page_link" href="/Product">HOME/</a></li>
+                    <li className="p_product_page"><a className="p_product_page_link" href="/Product">ITEM/</a></li>
+                    <li className="pp_product_page"><a className="pp_product_page" href="/">NEW ARRIVALS</a></li>
                 </ul>
             </nav>
         </div>
